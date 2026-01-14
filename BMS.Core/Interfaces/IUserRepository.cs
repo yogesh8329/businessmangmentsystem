@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BMS.Core.DTOs;
+using BMS.Core.Entities;
 
 namespace BMS.Core.Interfaces
 {
-    internal interface Interface1
+    public interface IUserRepository
     {
+        Task<IEnumerable<UserDto>> GetAllAsync();
+
+        Task<UserDto?> GetByIdAsync(int id);
+
+        Task AddAsync(User user);
     }
 }
