@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
   <Project Path="BMS.Api/BMS.Api.csproj" />
   <Project Path="BMS.Core/BMS.Core.csproj" />
   <Project Path="BMS.Web/BMS.Web.csproj" />
