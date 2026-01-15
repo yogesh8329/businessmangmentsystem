@@ -1,11 +1,45 @@
+using Microsoft.OpenApi.Models;
+using BMS.Core.Interfaces;
+using BMS.Api.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
+// =====================
+// Services (DI container)
+// =====================
+
+// Controllers
 builder.Services.AddControllers();
+
+// Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "BMS API",
+        Version = "v1"
+    });
+});
+
+// Dependency Injection
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+// =====================
+// HTTP request pipeline
+// =====================
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "BMS API v1");
+    });
+}
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

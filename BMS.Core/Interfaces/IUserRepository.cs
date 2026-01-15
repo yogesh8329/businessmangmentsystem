@@ -10,5 +10,7 @@ namespace BMS.Core.Interfaces
         Task<UserDto?> GetByIdAsync(int id);
 
         Task AddAsync(User user);
+        Task<int> AddAsync(CreateUserDto dto);
+
     }
 }

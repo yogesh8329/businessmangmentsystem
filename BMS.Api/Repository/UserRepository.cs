@@ -1,11 +1,8 @@
-﻿    using BMS.Core.DTOs;
-    using BMS.Core.Entities;
-    using BMS.Core.Interfaces;
-    using global::BMS.Core.DTOs;
-    using global::BMS.Core.Entities;
-    using global::BMS.Core.Interfaces;
+﻿using BMS.Core.DTOs;
+using BMS.Core.Entities;
+using BMS.Core.Interfaces;
 
-    namespace BMS.Api.Repositories
+namespace BMS.Api.Repositories
     {
         public class UserRepository : IUserRepository
         {
