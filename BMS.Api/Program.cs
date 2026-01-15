@@ -1,12 +1,14 @@
-using Microsoft.OpenApi.Models;
-using BMS.Core.Interfaces;
+using BMS.Api.Data;
 using BMS.Api.Repositories;
+using BMS.Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// =====================
-// Services (DI container)
-// =====================
+
 
 // Controllers
 builder.Services.AddControllers();
