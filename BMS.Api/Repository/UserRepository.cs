@@ -1,5 +1,4 @@
-﻿
-    using BMS.Core.DTOs;
+﻿    using BMS.Core.DTOs;
     using BMS.Core.Entities;
     using BMS.Core.Interfaces;
     using global::BMS.Core.DTOs;
@@ -46,5 +45,21 @@
                 _users.Add(user);
                 return Task.CompletedTask;
             }
+        public async Task<int> AddAsync(CreateUserDto dto)
+        {
+            var user = new User
+            {
+                Id = _users.Any() ? _users.Max(x => x.Id) + 1 : 1,
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                Email = dto.Email,
+                IsActive = true
+            };
+
+            _users.Add(user);
+
+            return await Task.FromResult(user.Id);
         }
+
     }
+}
