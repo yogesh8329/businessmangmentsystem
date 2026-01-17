@@ -6,5 +6,8 @@ namespace BMS.Core.Interfaces
     {
         Task<Order> CreateAsync(Order order);
         Task<List<Order>> GetAllAsync();
+        Task<Order?> UpdateAsync(int id, decimal totalAmount);
+        Task<Order?> UpdateStatusAsync(int id, string status);
+
     }
 }

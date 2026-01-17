@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BMS.Core.DTOs
+﻿namespace BMS.Core.DTOs
 {
-    internal class UpdateOrderDtos
+    public class UpdateOrderDto
     {
+        public decimal TotalAmount { get; set; }
     }
 }
