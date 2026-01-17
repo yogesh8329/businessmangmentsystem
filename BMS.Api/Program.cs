@@ -1,10 +1,13 @@
 using BMS.Api.Data;
 using BMS.Api.Repositories;
+using BMS.Api.Repository;
 using BMS.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
