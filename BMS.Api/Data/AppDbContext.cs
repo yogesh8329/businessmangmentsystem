@@ -11,5 +11,8 @@ namespace BMS.Api.Data
         }
 
         public DbSet<User> Users => Set<User>();
+        public DbSet<Order> Orders { get; set; }
+
+
     }
 }
