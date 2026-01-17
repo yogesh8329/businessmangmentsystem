@@ -1,4 +1,5 @@
-﻿using BMS.Core.Entities;
+﻿using BMS.Core.DTOs;
+using BMS.Core.Entities;
 using BMS.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,5 +31,22 @@ namespace BMS.Api.Controllers
             var orders = await _orderRepository.GetAllAsync();
             return Ok(orders);
         }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateOrder(int id, UpdateOrderDto dto)
+        {
+            var order = await _orderRepository.UpdateAsync(id, dto.TotalAmount);
+            if (order == null) return NotFound();
+
+            return Ok(order);
+        }
+        [HttpPatch("{id}/status")]
+        public async Task<IActionResult> UpdateOrderStatus(int id, UpdateOrderStatusDto dto)
+        {
+            var order = await _orderRepository.UpdateStatusAsync(id, dto.Status);
+            if (order == null) return NotFound();
+
+            return Ok(order);
+        }
+
     }
 }
